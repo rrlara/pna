@@ -57,12 +57,6 @@ angular.module('webApp')
             var myLayer = L.mapbox.featureLayer().addTo($scope.map);
 
             myLayer.setGeoJSON(arrayGeoJson);
-        
-            // var geoJson = L.geoJson(arrayGeoJson, {
-            //     pointToLayer: L.mapbox.marker.style,
-            //     style: function(feature) { return feature.properties; 
-            //     }
-            // }).addTo($scope.map);
 
             function resetColors() {
                 for (var i = 0; i < arrayGeoJson.features.length; i++) {
@@ -82,7 +76,32 @@ angular.module('webApp')
                     e.layer.feature.properties['marker-size'] = "large";
                     myLayer.setGeoJSON(arrayGeoJson);
                 });
-        });
+
+
+
+            $scope.$on('itemClickedOnList', function(evt, itemID){
+
+                resetColors();
+
+                for (var i = 0; i < arrayGeoJson.features.length; i++) {
+                    if(arrayGeoJson.features[i].properties.id == itemID){
+                        arrayGeoJson.features[i].properties['marker-size'] = "large";
+                    arrayGeoJson.features[i].properties['marker-color'] = "#ff8888";
+
+                    // var latlng = L.latLng(arrayGeoJson.features[i].geometry.coordinates[1], arrayGeoJson.features[i].geometry.coordinates[0]);
+
+                    $scope.map.setView([arrayGeoJson.features[i].geometry.coordinates[1], arrayGeoJson.features[i].geometry.coordinates[0]]);
+
+                    }
+                    
+                }
+                
+                myLayer.setGeoJSON(arrayGeoJson);
+                });
+
+
+
+            });
 
 
         

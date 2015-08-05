@@ -1,6 +1,6 @@
 
 angular.module('webApp')
-    .controller('ListController', function($scope, $mdSidenav, $log, GarageSaleFactory) {
+    .controller('ListController', function($scope, $rootScope, $mdSidenav, $log, GarageSaleFactory) {
 
         /**
          * For swiping the left panel closed when panel is presented in phone form factor
@@ -64,6 +64,14 @@ angular.module('webApp')
             console.log(sale.description);
 
             //TODO - ZOOM TO POINT
+
+             var clickedItemID = sale.id;
+
+            $scope.close();
+
+
+            $rootScope.$broadcast("itemClickedOnList", clickedItemID);
+
         }
     });
 
