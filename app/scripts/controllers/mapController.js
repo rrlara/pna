@@ -1,6 +1,6 @@
 
 angular.module('webApp')
-    .controller('MapController', function($scope, AppConfiguration, GarageSaleFactory) {
+    .controller('MapController', function($scope, $mdBottomSheet, AppConfiguration, GarageSaleFactory) {
 
         /**
          * Initialization
@@ -14,6 +14,16 @@ angular.module('webApp')
             $scope.setDefaultTileLayer();
             $scope.setDefaultExtent();
         });
+
+        $scope.showListBottomSheet = function() {
+            $scope.alert = '';
+            $mdBottomSheet.show({
+              templateUrl: 'itemDetails-bottomsheet.html',
+              controller: 'ListBottomSheetCtrl'
+            }).then(function(clickedItem) {
+              $scope.alert = clickedItem.name + ' clicked!';
+            });
+          };
 
         /**
          * The MapboxJS/Leaflet map object
@@ -75,6 +85,7 @@ angular.module('webApp')
                     e.layer.feature.properties['marker-color'] = '#ff8888';
                     e.layer.feature.properties['marker-size'] = "large";
                     myLayer.setGeoJSON(arrayGeoJson);
+                    $scope.showListBottomSheet();
                 });
 
 
@@ -91,23 +102,30 @@ angular.module('webApp')
                     // var latlng = L.latLng(arrayGeoJson.features[i].geometry.coordinates[1], arrayGeoJson.features[i].geometry.coordinates[0]);
 
                     $scope.map.setView([arrayGeoJson.features[i].geometry.coordinates[1], arrayGeoJson.features[i].geometry.coordinates[0]]);
-
-                    }
-                    
+                    }   
                 }
-                
                 myLayer.setGeoJSON(arrayGeoJson);
+
+                
+                
                 });
-
-
-
             });
 
 
         
 
-
-
-
-
+    
     });
+
+angular.module('webApp').controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
+  $scope.items = [
+    { name: 'Share', icon: 'share-arrow' },
+    { name: 'Upload', icon: 'upload' },
+    { name: 'Copy', icon: 'copy' },
+    { name: 'Print this page', icon: 'print' },
+  ];
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
