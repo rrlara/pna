@@ -50,26 +50,49 @@ angular.module('webApp')
 
             var garageSales = GarageSaleFactory.getGarageSales();
 
+            var arrayGeoJson = GeoJSON.parse(garageSales, {Point: ['latitude', 'longitude']});
+
+            console.log(arrayGeoJson);
+
+        
+            var geoJson = L.geoJson(arrayGeoJson, {
+                pointToLayer: L.mapbox.marker.style,
+                style: function(feature) { return feature.properties; 
+                }
+            }).addTo($scope.map);
+
             //add garage sales as markers to map
-            for (var i = 0, il = garageSales.length; i < il; i++) {
+            // for (var i = 0, il = garageSales.length; i < il; i++) {
 
-                var currentSale = garageSales[i];
+            //     var currentSale = garageSales[i];
 
-                //coordinate
-                var latitude = currentSale.latitude;
-                var longitude = currentSale.longitude;
+            //     //coordinate
+            //     var latitude = currentSale.latitude;
+            //     var longitude = currentSale.longitude;
 
-                //marker popup html
-                var popupHTML = "<h4>hello</h4>world";
+            //     //marker popup html
+            //     var popupHTML = "<h4>hello</h4>world";
 
-                //add marker
-                L.marker([latitude, longitude], {
-                    icon: L.icon({
-                        "iconUrl": "images/" + currentSale.categoryImageName,
-                        "iconSize": [22, 35],
-                        "popupAnchor":  [0, -12]
-                    })
-                 }).addTo($scope.map).bindPopup(popupHTML);
-            }
+            //     //add marker
+            //     L.marker([latitude, longitude], {
+            //         icon: L.icon({
+            //             "iconUrl": "images/" + currentSale.categoryImageName,
+            //             "iconSize": [22, 35],
+            //             "popupAnchor":  [0, -12]
+            //         })
+            //      }).addTo($scope.map).bindPopup(popupHTML);
+            // }
+
+            geoJson.on('click', function(e) {
+                    console.log("whatup");
+                });
         });
+
+
+        
+
+
+
+
+
     });
