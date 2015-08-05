@@ -54,37 +54,31 @@ angular.module('webApp')
 
             console.log(arrayGeoJson);
 
+            var myLayer = L.mapbox.featureLayer().addTo($scope.map);
+
+            myLayer.setGeoJSON(arrayGeoJson);
         
-            var geoJson = L.geoJson(arrayGeoJson, {
-                pointToLayer: L.mapbox.marker.style,
-                style: function(feature) { return feature.properties; 
+            // var geoJson = L.geoJson(arrayGeoJson, {
+            //     pointToLayer: L.mapbox.marker.style,
+            //     style: function(feature) { return feature.properties; 
+            //     }
+            // }).addTo($scope.map);
+
+            function resetColors() {
+                for (var i = 0; i < arrayGeoJson.features.length; i++) {
+                    arrayGeoJson.features[i].properties['marker-color'] = "#3bb2d0";
                 }
-            }).addTo($scope.map);
+                myLayer.setGeoJSON(arrayGeoJson);
+            }
 
-            //add garage sales as markers to map
-            // for (var i = 0, il = garageSales.length; i < il; i++) {
 
-            //     var currentSale = garageSales[i];
-
-            //     //coordinate
-            //     var latitude = currentSale.latitude;
-            //     var longitude = currentSale.longitude;
-
-            //     //marker popup html
-            //     var popupHTML = "<h4>hello</h4>world";
-
-            //     //add marker
-            //     L.marker([latitude, longitude], {
-            //         icon: L.icon({
-            //             "iconUrl": "images/" + currentSale.categoryImageName,
-            //             "iconSize": [22, 35],
-            //             "popupAnchor":  [0, -12]
-            //         })
-            //      }).addTo($scope.map).bindPopup(popupHTML);
-            // }
-
-            geoJson.on('click', function(e) {
+            myLayer.on('click', function(e) {
                     console.log("whatup");
+                    // alert("whatup");
+                    resetColors();
+                    // e.layer.feature.properties['old-color'] = e.layer.feature.properties['marker-color'];
+                    e.layer.feature.properties['marker-color'] = '#ff8888';
+                    myLayer.setGeoJSON(arrayGeoJson);
                 });
         });
 
