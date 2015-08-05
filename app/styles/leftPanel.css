@@ -1,0 +1,100 @@
+/*
+ *  The entire left panel
+ */
+#leftPanel {
+    max-height:704px; /*This has the side-effect of haveing the left panel scroll when the height of all list items is greater than the height of the map*/
+}
+
+/*
+ *  The top level list
+ */
+#leftPanelList {
+}
+
+/*
+ *  An individual list item
+ */
+.listItem {
+    margin-top: 15px;
+    font-size: 9pt;
+    /*background-color: rgb(201, 205, 205);*/
+    height: 120px;
+    cursor: pointer;
+}
+
+/*
+ *  For marker icon for an individual listItem
+ */
+.listItemMarker {
+    float:left;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+/*
+ *  For sale content for an individual listItem
+ */
+.listItemSaleContent {
+    position: relative;
+    float: left;
+    /*background-color: red;*/
+    width: 250px;
+    height: 108px;
+}
+
+/*
+ *  For major text in an individual listItem
+ */
+.listItemTitle {
+    font-weight:bold;
+    font-size:13pt;
+}
+
+/*
+ *  For minor text in an individual listItem
+ */
+.listItemSubtitle {
+    font-weight:bold;
+}
+
+/*
+ *  Wrapper around all individual category icons
+ */
+.listItemSaleCategories {
+    position: absolute;
+    bottom: 0;
+}
+
+/*
+ *  For positioning an individual category icon
+ */
+.listItemCategory {
+    float: left;
+    width:  25px;
+    height: 25px;
+    margin-right: 6px;
+    margin-top: 12px;
+}
+
+/*
+ *  For positioning the directions link and image
+ */
+.listItemDirections {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+/*
+ * For styling the directions text
+ */
+.listItemDirectionsText {
+    font-size: 10pt;
+    text-decoration: underline;
+    color:#226c8f;
+}
+
+/*
+ * For styling the directions arrow icon
+ */
+.listItemDirectionArrow { }

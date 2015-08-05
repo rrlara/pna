@@ -1,0 +1,36 @@
+#mainToolbar {
+    background-color:rgb(167, 170, 186);
+}
+
+.mainToolbarTitle {
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+}
+
+.toolbarText {
+    font-size:12pt;
+    margin-top:10px;
+}
+
+.hamburgerButton {
+    padding: 0;
+    margin: 0;
+    height: 35px;
+    width: 35px;
+    float:left;
+}
+
+.rightButton {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+/* applies to both left and ride sidenavs*/
+.sideToolbar {
+    background-color: #efeff4 !important;
+    color: #1e2f3b !important;
+    font-weight:bold;
+}

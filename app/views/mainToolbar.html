@@ -1,0 +1,22 @@
+<!--CENTER TOOLBAR-->
+<md-toolbar class="md-theme-indigo">
+    <div class="md-toolbar-tools">
+
+        <!--LEFT PANEL TOGGLE BUTTON-->
+        <!--<md-button class="hamburgerButton" ng-click="toggleLeftPanel()" hide-gt-md>-->
+        <md-button aria-label="hamburgerButton" class="hamburgerButton" ng-click="toggleLeftPanel()">
+            <md-icon md-svg-src="images/hamburger.svg" class="ng-scope ng-isolate-scope md-default-theme" aria-hidden="true"></md-icon>
+        </md-button>
+
+        <!--CENTER TITLE-->
+        <span class="mainToolbarTitle">
+            <!--<img src="images/pna_logo-2x.png" width="197px" height="45px">-->
+            <img src="images/pna_logo-2x.png" width="149px" height="34px">
+        </span>
+
+        <!--RIGHT PANEL TOGGLE BUTTON-->
+        <md-button class="rightButton" ng-click="toggleRightPanel()">
+            <span class="toolbarText">FILTER</span>
+        </md-button>
+    </div>
+</md-toolbar>

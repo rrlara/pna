@@ -1,0 +1,30 @@
+#rightPanel {
+    height:100%;
+}
+
+.filterItem {
+    float:left;
+}
+
+.filterItemMarker {
+    margin-top: 17px;
+    width: 16px;
+    height: 21px;
+}
+
+.filterItemCategoryImage {
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.filterItemText {
+    margin-top: 17px;
+    margin-left: 10px;
+    width: 210px;
+}
+
+.categorySection {
+    background-color:gray;
+    height:80px;
+}

@@ -1,0 +1,39 @@
+<!--SCROLL TO TOP TARGET-->
+<a id="leftPanelTop"></a>
+
+<!--LEFT PANEL TOOLBAR-->
+<md-toolbar class="md-theme-indigo sideToolbar">
+    <div class="md-toolbar-tools">
+        <!--<span class="toolbarText">GARAGE SALE LOCATIONS</span>-->
+        <span class="toolbarText">SALE LOCATIONS</span>
+    </div>
+</md-toolbar>
+
+<!--LEFT PANEL CONTENT-->
+<md-content flex role="navigation" layout-padding>
+    <!--GARAGE SALE LIST-->
+    <md-list id="leftPanelList">
+        <!--GARAGE SALE LIST ITEMS-->
+        <div ng-repeat="sale in garageSales">
+            <div class="listItem" ng-click="handleListItemClick(sale)">
+                <div class="listItemMarker">
+                    <img ng-src="images/{{sale.categoryImageName}}" width="18px" height="29px"/>
+                </div>
+                <div class="listItemSaleContent">
+                    <span class="listItemTitle">{{sale.address}}</span>
+                    <br/>
+                    <span class="listItemSubtitle">Description</span>: {{sale.description}}
+                    <br/>
+                    <div class="listItemSaleCategories">
+                        <img class="listItemCategory" ng-repeat="image in sale.subCategoryImageNames" ng-src="images/{{image}}"/>
+                    </div>
+                    <md-button class="listItemDirections" ng-click="handleDirectionButtonTap(sale)">
+                        <span class="listItemDirectionsText">Directions</span>
+                        <img src="images/directionsArrow.png"/>
+                    </md-button>
+                </div>
+            </div>
+            <md-divider></md-divider>
+        </div>
+    </md-list>
+</md-content>

@@ -1,0 +1,10 @@
+#mapWrapper {
+    padding:0 !important;
+    margin:0 !important;
+    height: 1024px;  /*initial height - this is dynamically resized at runtime during window.onResize */
+}
+
+#map {
+    height:100% !important;
+    width:100% !important;
+}

@@ -1,0 +1,37 @@
+<!--SCROLL TO TOP TARGET-->
+<a id="rightPanelTop"></a>
+
+<!--RIGHT PANEL TOOLBAR-->
+<md-toolbar class="md-theme-light sideToolbar">
+    <div class="md-toolbar-tools">
+        <span class="toolbarText">FILTER</span>
+    </div>
+</md-toolbar>
+
+<!--RIGHT PANEL CONTENT-->
+<md-content flex role="navigation">
+    <md-list>
+
+        <!--CATEGORIES-->
+        <div ng-repeat="category in categories" class="filterItem">
+            <md-checkbox aria-label="categoryCheckbox" class="md-primary filterItem" ng-model=category.isActive ng-change="handleFilterChange()"></md-checkbox>
+            <img ng-src="images/{{category.img}}" class="filterItem filterItemMarker" alt="marker"/>
+            <span class="filterItem filterItemText">{{category.name}}</span>
+        </div>
+
+        <!--TOOLBAR SEPARATOR-->
+        <md-toolbar class="md-theme-light sideToolbar">
+            <div class="md-toolbar-tools">
+                <span class="toolbarText">CATEGORIES</span>
+            </div>
+        </md-toolbar>
+
+        <!--SUBCATEGORIES-->
+        <div ng-repeat="subCategory in subCategories" class="filterItem">
+            <md-checkbox aria-label="subcategoryCheckbox" class="md-primary filterItem" ng-model=subCategory.isActive ng-change="handleFilterChange()"></md-checkbox>
+            <img ng-src="images/{{subCategory.img}}" class="filterItem filterItemCategoryImage" alt="category"/>
+            <span class="filterItem filterItemText">{{subCategory.name}}</span>
+        </div>
+
+    </md-list>
+</md-content>

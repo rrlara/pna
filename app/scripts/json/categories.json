@@ -1,0 +1,12 @@
+[
+  {
+    "name":"Benefit Sale",
+    "img":"orange-mark-lg.png",
+    "isActive":true
+  },
+  {
+    "name":"Family Sale",
+    "img":"blue-mark-lg.png",
+    "isActive":true
+  }
+]

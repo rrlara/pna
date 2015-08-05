@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PNA Garage Sale</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!--ANGULAR MATERIAL CSS-->
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css">
+    <!--MAPBOXJS CSS-->
+    <link rel="stylesheet" href="../bower_components/mapbox.js/mapbox.css"/>
+    <!--GOOGLE fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+    <!--APP CSS-->
+    <link rel="stylesheet" href="styles/leftPanel.css">
+    <link rel="stylesheet" href="styles/mainToolbar.css">
+    <link rel="stylesheet" href="styles/rightPanel.css">
+    <link rel="stylesheet" href="styles/map.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <!--Google Analytics-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47887851-2', 'garagesalemap.org');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body ng-app="webApp">
+
+    <div layout="row" flex>
+        <!--LEFT PANEL-->
+        <!--<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">-->
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+            <div id="leftPanel" md-swipe-left="onSwipeLeft()" ng-include="'views/list.html'" ng-controller="ListController"></div>
+        </md-sidenav>
+        <!--CENTER CONTENT--->
+        <md-content flex>
+            <!--CENTER TOOLBAR-->
+            <div id="mainToolbar" ng-include="'views/mainToolbar.html'" ng-controller="MainToolbarController"></div>
+            <!--CENTER UNDER TOOLBAR -->
+            <div mapresizer id="mapWrapper">
+                <div id="map" ng-controller="MapController"></div>
+            </div>
+        </md-content>
+        <!--RIGHT PANEL-->
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+            <div id="rightPanel" md-swipe-right="onSwipeRight()" ng-include="'views/filter.html'" ng-controller="FilterController"></div>
+        </md-sidenav>
+    </div>
+
+    <!--ANGULAR JS-->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <!--ANGULAR MATERIAL-->
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../bower_components/angular-material/angular-material.min.js"></script>
+    <!--MAPBOXJS-->
+    <script src="../bower_components/mapbox.js/mapbox.js"></script>
+    <!--APP JS-->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/appConfiguration.js"></script>
+    <script src="scripts/controllers/mainToolbarController.js"></script>
+    <script src="scripts/controllers/listController.js"></script>
+    <script src="scripts/controllers/filterController.js"></script>
+    <script src="scripts/controllers/mapController.js"></script>
+    <script src="scripts/directives/mapresizer.js"></script>
+    <script src="scripts/models/garageSaleFactory.js"></script>
+    <script src="scripts/models/categoryFactory.js"></script>
+    <script src="scripts/models/subCategoryFactory.js"></script>
+</body>
+</html>

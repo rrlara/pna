@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Children & Family",
+    "img": "family@2x.png",
+    "isActive": true
+  },
+  {
+    "name": "Furniture",
+    "img": "furniture@2x.png",
+    "isActive": true
+  },
+  {
+    "name": "Clothing",
+    "img": "clothing@2x.png",
+    "isActive": true
+  },
+  {
+    "name": "Tools",
+    "img": "tools@2x.png",
+    "isActive": true
+  },
+  {
+    "name": "Books",
+    "img": "books@2x.png",
+    "isActive": true
+  },
+  {
+    "name": "Collectibles",
+    "img": "antiques@2x.png",
+    "isActive": true
+  },
+  {
+    "name": "Sports",
+    "img": "sport@2x.png",
+    "isActive": true
+  },
+  {
+    "name": "Kitchen",
+    "img": "kitchen@2x.png",
+    "isActive": true
+  },
+  {
+    "name": "Other",
+    "img": "other@2x.png",
+    "isActive": true
+  }
+]
