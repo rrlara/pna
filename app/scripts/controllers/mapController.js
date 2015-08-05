@@ -66,6 +66,7 @@ angular.module('webApp')
 
             function resetColors() {
                 for (var i = 0; i < arrayGeoJson.features.length; i++) {
+                    arrayGeoJson.features[i].properties['marker-size'] = "small";
                     arrayGeoJson.features[i].properties['marker-color'] = "#3bb2d0";
                 }
                 myLayer.setGeoJSON(arrayGeoJson);
@@ -78,6 +79,7 @@ angular.module('webApp')
                     resetColors();
                     // e.layer.feature.properties['old-color'] = e.layer.feature.properties['marker-color'];
                     e.layer.feature.properties['marker-color'] = '#ff8888';
+                    e.layer.feature.properties['marker-size'] = "large";
                     myLayer.setGeoJSON(arrayGeoJson);
                 });
         });
