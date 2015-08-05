@@ -21,9 +21,9 @@ angular.module('webApp')
         /**
          * For swiping the left panel closed when panel is presented in phone form factor
          */
-        $scope.onSwipeRight = function() {
-            $scope.close();
-        };
+        // $scope.onSwipeRight = function() {
+        //     $scope.close();
+        // };
 
         /**
          * For closing the right panel

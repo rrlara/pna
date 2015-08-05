@@ -5,9 +5,9 @@ angular.module('webApp')
         /**
          * For swiping the left panel closed when panel is presented in phone form factor
          */
-        $scope.onSwipeLeft = function() {
-            $scope.close();
-        };
+        // $scope.onSwipeLeft = function() {
+        //     $scope.close();
+        // };
 
         /**
          * For closing the left panel

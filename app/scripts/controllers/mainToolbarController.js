@@ -9,8 +9,8 @@ angular.module('webApp')
 
             $mdSidenav('left').toggle().then(function(){
                 //scroll to top of list
-                $location.hash('leftPanelTop');
-                $anchorScroll();
+                // $location.hash('leftPanelTop');
+                // $anchorScroll();
             });
         };
 
@@ -21,8 +21,8 @@ angular.module('webApp')
 
             $mdSidenav('right').toggle().then(function(){
                 //scroll to top
-                $location.hash('rightPanelTop');
-                $anchorScroll();
+                // $location.hash('rightPanelTop');
+                // $anchorScroll();
             });
         };
 
