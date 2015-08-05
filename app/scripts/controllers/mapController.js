@@ -1,6 +1,6 @@
 
 angular.module('webApp')
-    .controller('MapController', function($scope, $mdBottomSheet, AppConfiguration, GarageSaleFactory) {
+    .controller('MapController', function($scope, $mdBottomSheet, $timeout, AppConfiguration, GarageSaleFactory) {
 
         /**
          * Initialization
@@ -85,7 +85,10 @@ angular.module('webApp')
                     e.layer.feature.properties['marker-color'] = '#ff8888';
                     e.layer.feature.properties['marker-size'] = "large";
                     myLayer.setGeoJSON(arrayGeoJson);
-                    $scope.showListBottomSheet();
+                    $timeout(function() {
+                        $scope.showListBottomSheet();
+                    }, 500);
+                    
                 });
 
 
