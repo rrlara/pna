@@ -1,6 +1,6 @@
 
 angular.module('webApp')
-    .controller('MapController', function($scope, $mdBottomSheet, $timeout, AppConfiguration, GarageSaleFactory) {
+    .controller('MapController', function($scope, $mdBottomSheet, $mdDialog,$timeout, AppConfiguration, GarageSaleFactory) {
 
         /**
          * Initialization
@@ -24,6 +24,19 @@ angular.module('webApp')
               $scope.alert = clickedItem.name + ' clicked!';
             });
           };
+
+        $scope.showAdvanced = function() {
+            $mdDialog.show({
+                controller: 'InfoDialogController',
+                templateUrl: 'infoDialog.html',
+                parent: angular.element(document.body)
+            })
+                .then(function(answer) {
+                    $scope.alert = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.alert = 'You cancelled the dialog.';
+                });
+        };
 
         /**
          * The MapboxJS/Leaflet map object
@@ -86,8 +99,12 @@ angular.module('webApp')
                     e.layer.feature.properties['marker-size'] = "large";
                     myLayer.setGeoJSON(arrayGeoJson);
                     $timeout(function() {
-                        $scope.showListBottomSheet();
+                        //$scope.showListBottomSheet();
                     }, 500);
+
+                $timeout(function() {
+                    $scope.showAdvanced();
+                }, 1000);
                     
                 });
 
@@ -109,10 +126,15 @@ angular.module('webApp')
                 }
                 myLayer.setGeoJSON(arrayGeoJson);
 
+                $timeout(function() {
+                    $scope.showAdvanced();
+                }, 1000);
+
                 
                 
                 });
             });
+
 
 
         

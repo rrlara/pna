@@ -1,6 +1,6 @@
 
 angular.module('webApp')
-    .controller('ListController', function($scope, $rootScope, $mdSidenav, $log, GarageSaleFactory) {
+    .controller('ListController', function($scope, $rootScope, $mdSidenav, $mdDialog, $timeout, $log, GarageSaleFactory) {
 
         /**
          * For swiping the left panel closed when panel is presented in phone form factor
@@ -49,6 +49,20 @@ angular.module('webApp')
             //TODO - MAKE CALL TO DIRECTIONS API, WILL THEN ZOOM TO EXTENT OF ROUTE
         };
 
+        $scope.showAdvanced = function() {
+            $mdDialog.show({
+                controller: 'InfoDialogController',
+                templateUrl: 'infoDialog.html',
+                parent: angular.element(document.body)
+            })
+                .then(function(answer) {
+                    $scope.alert = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.alert = 'You cancelled the dialog.';
+                });
+        };
+
+
         /**
          * For handling when user taps on a list item
          * @param sale - The GarageSale object associated with the list item the user tapped
@@ -71,6 +85,13 @@ angular.module('webApp')
 
 
             $rootScope.$broadcast("itemClickedOnList", clickedItemID);
+
+            //$timeout(function() {
+            //    $scope.showAdvanced();
+            //}, 1000);
+
+
+
 
         }
     });
