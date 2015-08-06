@@ -140,7 +140,7 @@ angular.module('webApp')
 
                 $timeout(function() {
                     $scope.showAdvanced();
-                }, 500);
+                }, 1000);
                 });
             });
 
