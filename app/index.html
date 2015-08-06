@@ -31,8 +31,8 @@
 
     <div layout="row" flex>
         <!--LEFT PANEL-->
-        <!--<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">-->
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <!-- <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"> -->
             <div id="leftPanel" md-swipe-left="onSwipeLeft()" ng-include="'views/list.html'" ng-controller="ListController"></div>
         </md-sidenav>
         <!--CENTER CONTENT--->
