@@ -9,49 +9,49 @@
 </md-toolbar>
 
 <!--LEFT PANEL CONTENT-->
-<!--<md-content flex role="navigation" layout-padding>-->
-    <!--&lt;!&ndash;GARAGE SALE LIST&ndash;&gt;-->
-    <!--<md-list id="leftPanelList">-->
-        <!--&lt;!&ndash;GARAGE SALE LIST ITEMS&ndash;&gt;-->
-        <!--<div ng-repeat="sale in garageSales">-->
-            <!--<div class="listItem" ng-click="handleListItemClick(sale)">-->
-                <!--<div class="listItemMarker">-->
-                    <!--<img ng-src="images/{{sale.categoryImageName}}" width="18px" height="29px"/>-->
-                <!--</div>-->
-                <!--<div class="listItemSaleContent">-->
-                    <!--<span class="listItemTitle">{{sale.address}}</span>-->
-                    <!--<br/>-->
-                    <!--<span class="listItemSubtitle">Description</span>: {{sale.description}}-->
-                    <!--<br/>-->
-                    <!--<div class="listItemSaleCategories">-->
-                        <!--<img class="listItemCategory" ng-repeat="image in sale.subCategoryImageNames" ng-src="images/{{image}}"/>-->
-                    <!--</div>-->
-                    <!--<md-button class="listItemDirections" ng-click="handleDirectionButtonTap(sale)">-->
-                        <!--<span class="listItemDirectionsText">Directions</span>-->
-                        <!--<img src="images/directionsArrow.png"/>-->
-                    <!--</md-button>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<md-divider></md-divider>-->
-        <!--</div>-->
-    <!--</md-list>-->
-<!--</md-content>-->
-
-<md-content class="surveyListContainer md-padding">
-
-    <md-card ng-repeat="sale in garageSales">
-        <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
-        <!--<img ng-src="images/{{sale.categoryImageName}}" width="18px" height="29px"/>-->
-        <i class="fa fa-map-marker cardMarker"></i>
-        <md-card-content ng-click="handleListItemClick(sale)">
-            <h2 class="md-title">{{sale.address}}</h2>
-            <p>
-                {{sale.description}}
-            </p>
-        </md-card-content>
-        <div class="md-actions" layout="row" layout-align="end center">
-            <md-button ng-click="handleSeeInfoButtonTap(sale)">See info</md-button>
+<md-content flex role="navigation" layout-padding>
+    <!--GARAGE SALE LIST-->
+    <md-list id="leftPanelList">
+        <!--GARAGE SALE LIST ITEMS-->
+        <div ng-repeat="sale in garageSales">
+            <div class="listItem" ng-click="handleListItemClick(sale)">
+                <div class="listItemMarker">
+                    <img ng-src="images/{{sale.categoryImageName}}" width="18px" height="29px"/>
+                </div>
+                <div class="listItemSaleContent">
+                    <span class="listItemTitle">{{sale.address}}</span>
+                    <br/>
+                    <span class="listItemSubtitle">Description</span>: {{sale.description}}
+                    <br/>
+                    <div class="listItemSaleCategories">
+                        <img class="listItemCategory" ng-repeat="image in sale.subCategoryImageNames" ng-src="images/{{image}}"/>
+                    </div>
+                    <md-button class="listItemDirections" ng-click="handleSeeInfoButtonTap(sale)">
+                        <span class="listItemDirectionsText">See Info</span>
+                        <img src="images/directionsArrow.png"/>
+                    </md-button>
+                </div>
+            </div>
+            <md-divider></md-divider>
         </div>
-    </md-card>
-
+    </md-list>
 </md-content>
+
+<!--<md-content class="surveyListContainer md-padding">-->
+
+    <!--<md-card ng-repeat="sale in garageSales">-->
+        <!--&lt;!&ndash;<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">&ndash;&gt;-->
+        <!--&lt;!&ndash;<img ng-src="images/{{sale.categoryImageName}}" width="18px" height="29px"/>&ndash;&gt;-->
+        <!--<i class="fa fa-map-marker cardMarker"></i>-->
+        <!--<md-card-content ng-click="handleListItemClick(sale)">-->
+            <!--<h2 class="md-title">{{sale.address}}</h2>-->
+            <!--<p>-->
+                <!--{{sale.description}}-->
+            <!--</p>-->
+        <!--</md-card-content>-->
+        <!--<div class="md-actions" layout="row" layout-align="end center">-->
+            <!--<md-button ng-click="handleSeeInfoButtonTap(sale)">See info</md-button>-->
+        <!--</div>-->
+    <!--</md-card>-->
+
+<!--</md-content>-->

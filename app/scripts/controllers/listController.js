@@ -49,9 +49,9 @@ angular.module('webApp')
             //TODO - MAKE CALL TO DIRECTIONS API, WILL THEN ZOOM TO EXTENT OF ROUTE
 
             $scope.close();
+            $rootScope.$broadcast("itemClickedOnList", sale.id);
             $timeout(function() {
                 $scope.showAdvanced();
-                $rootScope.$broadcast("itemClickedOnList", sale.id);
             }, 500);
 
 
