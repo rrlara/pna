@@ -77,10 +77,18 @@ angular.module('webApp')
 
             console.log(arrayGeoJson);
 
-            var myLayer = L.mapbox.featureLayer().addTo($scope.map);
+            //Added default blue color to map pins on load
+            for (var i = 0; i < arrayGeoJson.features.length; i++) {
+                arrayGeoJson.features[i].properties['marker-size'] = "small";
+                arrayGeoJson.features[i].properties['marker-color'] = "#3bb2d0";
+            }
 
+            //add the GEOJSON layer to map
+            var myLayer = L.mapbox.featureLayer().addTo($scope.map);
+            //Once point data is loaded, add it the GEOJSON layer on the map
             myLayer.setGeoJSON(arrayGeoJson);
 
+            //reset to default color
             function resetColors() {
                 for (var i = 0; i < arrayGeoJson.features.length; i++) {
                     arrayGeoJson.features[i].properties['marker-size'] = "small";
@@ -104,9 +112,15 @@ angular.module('webApp')
 
                 $timeout(function() {
                     $scope.showAdvanced();
-                }, 1000);
+                }, 500);
                     
                 });
+
+            //if click anywhere on the map, the pins will go back to default color
+            function onMapClick(e) {
+                resetColors();
+            }
+            $scope.map.on('click', onMapClick);
 
 
 
@@ -119,8 +133,6 @@ angular.module('webApp')
                         arrayGeoJson.features[i].properties['marker-size'] = "large";
                     arrayGeoJson.features[i].properties['marker-color'] = "#ff8888";
 
-                    // var latlng = L.latLng(arrayGeoJson.features[i].geometry.coordinates[1], arrayGeoJson.features[i].geometry.coordinates[0]);
-
                     $scope.map.setView([arrayGeoJson.features[i].geometry.coordinates[1], arrayGeoJson.features[i].geometry.coordinates[0]]);
                     }   
                 }
@@ -128,10 +140,7 @@ angular.module('webApp')
 
                 $timeout(function() {
                     $scope.showAdvanced();
-                }, 1000);
-
-                
-                
+                }, 500);
                 });
             });
 
