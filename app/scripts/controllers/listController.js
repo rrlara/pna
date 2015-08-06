@@ -36,7 +36,7 @@ angular.module('webApp')
          * For handling when user taps on the directions button
          * @param sale - The GarageSale object associated with the list item the user tapped
          */
-        $scope.handleDirectionButtonTap = function(sale) {
+        $scope.handleSeeInfoButtonTap = function(sale) {
 
             //
             console.log('user tapped on directions button');
@@ -47,6 +47,14 @@ angular.module('webApp')
             console.log(sale.description);
 
             //TODO - MAKE CALL TO DIRECTIONS API, WILL THEN ZOOM TO EXTENT OF ROUTE
+
+            $scope.close();
+            $timeout(function() {
+                $scope.showAdvanced();
+                $rootScope.$broadcast("itemClickedOnList", sale.id);
+            }, 500);
+
+
         };
 
         $scope.showAdvanced = function() {
@@ -85,13 +93,6 @@ angular.module('webApp')
 
 
             $rootScope.$broadcast("itemClickedOnList", clickedItemID);
-
-            //$timeout(function() {
-            //    $scope.showAdvanced();
-            //}, 1000);
-
-
-
 
         }
     });

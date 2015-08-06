@@ -147,7 +147,7 @@ angular.module('webApp')
                 myLayer.setGeoJSON(arrayGeoJson);
                 //wait 1 sec to show info dialog
                 $timeout(function() {
-                    $scope.showAdvanced();
+                    //$scope.showAdvanced();
                 }, 1000);
                 });
             });

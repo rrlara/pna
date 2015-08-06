@@ -5,6 +5,11 @@
     max-height:704px; /*This has the side-effect of haveing the left panel scroll when the height of all list items is greater than the height of the map*/
 }
 
+.cardMarker{
+    margin: auto;
+    font-size: 24px;
+}
+
 /*
  *  The top level list
  */
