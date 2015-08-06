@@ -1,6 +1,6 @@
 
 angular.module('webApp')
-    .controller('MapController', function($scope, $mdBottomSheet, $mdDialog,$timeout, AppConfiguration, GarageSaleFactory) {
+    .controller('MapController', function($scope, $mdBottomSheet, $compile,$mdDialog,$timeout, AppConfiguration, GarageSaleFactory) {
 
         /**
          * Initialization
@@ -15,16 +15,21 @@ angular.module('webApp')
             $scope.setDefaultExtent();
         });
 
+
+        /**
+         * Bottom sheet method
+         */
         $scope.showListBottomSheet = function() {
-            $scope.alert = '';
             $mdBottomSheet.show({
               templateUrl: 'itemDetails-bottomsheet.html',
               controller: 'ListBottomSheetCtrl'
             }).then(function(clickedItem) {
-              $scope.alert = clickedItem.name + ' clicked!';
             });
           };
 
+        /**
+         * Info Dialog
+         */
         $scope.showAdvanced = function() {
             $mdDialog.show({
                 controller: 'InfoDialogController',
@@ -97,7 +102,9 @@ angular.module('webApp')
                 myLayer.setGeoJSON(arrayGeoJson);
             }
 
-
+            /**
+             * target the point to highlight
+             */
             myLayer.on('click', function(e) {
                     console.log("whatup");
                     // alert("whatup");
@@ -110,9 +117,8 @@ angular.module('webApp')
                         //$scope.showListBottomSheet();
                     }, 500);
 
-                $timeout(function() {
-                    $scope.showAdvanced();
-                }, 500);
+                //console.log(e.latlng)
+                costumeMarkerPopUp(e.latlng);
                     
                 });
 
@@ -125,31 +131,56 @@ angular.module('webApp')
 
 
             $scope.$on('itemClickedOnList', function(evt, itemID){
-
+                //reset points to default
                 resetColors();
-
+                // close any map popups
+                $scope.map.closePopup();
+                //target the point to highlight
                 for (var i = 0; i < arrayGeoJson.features.length; i++) {
                     if(arrayGeoJson.features[i].properties.id == itemID){
                         arrayGeoJson.features[i].properties['marker-size'] = "large";
                     arrayGeoJson.features[i].properties['marker-color'] = "#ff8888";
-
+                    //center map to the pin
                     $scope.map.setView([arrayGeoJson.features[i].geometry.coordinates[1], arrayGeoJson.features[i].geometry.coordinates[0]]);
                     }   
                 }
                 myLayer.setGeoJSON(arrayGeoJson);
-
+                //wait 1 sec to show info dialog
                 $timeout(function() {
                     $scope.showAdvanced();
                 }, 1000);
                 });
             });
 
+        /**
+         * Customized Mapbox Popup
+         */
+        function costumeMarkerPopUp(position){
+            //offset values
+            var options = {
+                offset:  new L.Point(1, -30)
+            };
+            // close any map popups
+            $scope.map.closePopup();
+            var template = '<md-button class="md-primary" ng-click="showAdvanced()" style="font-size: 24px"><i class="fa fa-info-circle"></i></md-button>';
+            template = template, linkFunction = $compile(angular.element(template)),
+                newScope = $scope.$new();
 
+            // define the map popup and put it on the map at the center of the polygon
+            popup = L.popup(options)
+                .setLatLng([position.lat, position.lng])
+                .setContent(linkFunction(newScope)[0])// use link function to create DOM for angularjs
+                .openOn($scope.map)
+        }
 
         
 
     
     });
+
+/**
+ * Bottomsheet controller
+ */
 
 angular.module('webApp').controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
   $scope.items = [
